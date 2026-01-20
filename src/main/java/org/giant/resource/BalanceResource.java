@@ -31,7 +31,7 @@ public class BalanceResource {
   //  @RolesAllowed({"ROLE_USER","ROLE_ADMIN"})
     @Transactional
     public Response reserve(ReserveRequest req, @HeaderParam("X-Correlation-Id") String correlationId) {
-        logger.debug("Reserving {} from account {}", req.amount(), req.number());
+        logger.info("Reserving {} from account {}", req.amount(), req.number());
         var acc = repo.findByNumber(req.number());
         if (acc == null || !"ACTIVE".equals(acc.status)) throw new WebApplicationException("ACCOUNT_INVALID", 409);
         if (acc.balance.compareTo(req.amount()) < 0) throw new WebApplicationException("INSUFFICIENT_FUNDS", 422);

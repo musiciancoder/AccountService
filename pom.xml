@@ -12,7 +12,7 @@
     <properties>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-        <quarkus.platform.version>3.15.0</quarkus.platform.version> <!-- adjust to latest stable -->
+        <quarkus.platform.version>3.15.0</quarkus.platform.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
@@ -61,7 +61,7 @@
             <artifactId>quarkus-hibernate-validator</artifactId>
         </dependency>
 
-        <!-- Health checks (optional but recommended for microservices) -->
+        <!-- Health checks  -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-health</artifactId>
@@ -73,15 +73,11 @@
             <artifactId>quarkus-smallrye-openapi</artifactId>
         </dependency>
 
-
         <!-- Micrometer Prometheus registry -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
         </dependency>
-
-
-
 
         <dependency>
             <groupId>io.quarkus</groupId>

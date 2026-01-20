@@ -1,4 +1,4 @@
-package org.giant.controller;
+package org.giant.resource;
 
 import jakarta.annotation.security.PermitAll;
 import jakarta.ws.rs.*;

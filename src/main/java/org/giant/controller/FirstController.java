@@ -1,10 +1,9 @@
-package org.giant;
+package org.giant.controller;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import org.giant.resource.BalanceResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +15,7 @@ public class FirstController {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-  logger.info("Hi!");
+    logger.info("Hi!");
         return "Hello from Quarkus RESTttr";
     }
 }

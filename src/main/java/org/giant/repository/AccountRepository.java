@@ -8,6 +8,11 @@ import java.util.List;
 
 @ApplicationScoped
 public class AccountRepository implements PanacheRepository<Account> {
-    public Account findByNumber(String number) { return find("number", number).firstResult(); }
-    public List<Account> listByCustomer(Long customerId) { return list("customerId", customerId); }
+    public Account findByNumber(String number) {
+        return find("number", number).firstResult();
+    }
+
+    public List<Account> listByCustomer(Long customerId) {
+        return list("customerId", customerId);
+    }
 }
