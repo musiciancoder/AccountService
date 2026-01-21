@@ -23,17 +23,21 @@ public class AccountResource {
         return acc == null ? Response.status(404).build() : Response.ok(acc).build();
     }
 
-    @GET @Path("/by-customer/{id}")
+    @GET
+    @Path("/by-customer/{id}")
     @PermitAll
     public Response listByCustomer(@PathParam("id") Long id) {
         return Response.ok(repo.listByCustomer(id)).build();
     }
 
-    @GET @Path("/{number}/validate/{amount}")
+    @GET
+    @Path("/{number}/validate/{amount}")
     @PermitAll
     public Response validate(@PathParam("number") String number, @PathParam("amount") BigDecimal amount) {
         var acc = repo.findByNumber(number);
         boolean ok = acc != null && "ACTIVE".equals(acc.status) && acc.balance.compareTo(amount) >= 0;
         return Response.ok(ok).build();
     }
+
+
 }

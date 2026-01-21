@@ -6,11 +6,15 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.giant.dto.CreditRequest;
+import org.giant.dto.NewCustomerRequest;
 import org.giant.dto.ReleaseRequest;
 import org.giant.dto.ReserveRequest;
+import org.giant.entity.Account;
 import org.giant.repository.AccountRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.math.BigDecimal;
 
 @Path("/accounts")
 @Produces(MediaType.APPLICATION_JSON)
@@ -70,4 +74,22 @@ public class BalanceResource {
         acc.balance = acc.balance.add(req.amount());
         return Response.ok().build();
     }
+
+    @POST
+    @Path("/new-customer")
+    //  @RolesAllowed({"ROLE_USER","ROLE_ADMIN"})
+    @Transactional
+    public Response createAccount(NewCustomerRequest req) {
+        logger.info("Creating account for customer {}", req.id());
+        Account acc = new Account();
+        acc.number = "ACCT-" + System.currentTimeMillis();
+        acc.customerId = req.id();
+        acc.balance = BigDecimal.valueOf(1000.00);
+        acc.type = "CHECKING";
+        acc.status = "ACTIVE";
+        acc.version = 1L;
+        repo.persist(acc);
+        return Response.ok(acc).build();
+    }
+
 }
