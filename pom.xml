@@ -49,9 +49,15 @@
         </dependency>
 
         <!-- Database driver (H2 for dev/test, swap with PostgreSQL/MySQL in prod) -->
-        <dependency>
+<!--        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>-->
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jdbc-postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
